@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "7c518b21-c69b-4d4b-b403-68404b2ff39c",
+		"name": "NewMan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET with URL params",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://www.getpostman.com/collections/f36406f34fcc7d4e0502",
+					"protocol": "https",
+					"host": [
+						"www",
+						"getpostman",
+						"com"
+					],
+					"path": [
+						"collections",
+						"f36406f34fcc7d4e0502"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asserts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b4d80d3-a053-4f91-8454-a4cb7697813a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    let a = {",
+							"        \"name\" : \"John\"",
+							"    };",
+							"    let b = {",
+							"        \"name\" : \"John\"",
+							"      //  \"age\"  : 19",
+							"    };",
+							"    pm.expect(a).to.eql(b);",
+							"});",
+							"",
+							"pm.test(\"Equlas by objects\", function () {",
+							"    let a = {",
+							"        \"name\" : \"John\"",
+							"    };",
+							"    let b = {",
+							"        \"name\" : \"John\"",
+							"        ",
+							"    };",
+							"    pm.expect(a).to.eql(b,'1');",
+							"   // pm.expect(a).to.equal(b,'2'); eaqules a and b references | eql - equlas by objects",
+							"});",
+							"",
+							"pm.test(\"Eqales of booleans and other\", function () {",
+							"  // pm.expect(false).to.be.true;",
+							"  // pm.expect(null).to.be.true;",
+							"  //pm.expect(undefined).to.be.true;",
+							"  pm.expect([]).to.be.empty;",
+							"  pm.expect([].length).to.eql(0);",
+							"    pm.expect(true).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Array assertation\", function () {",
+							"    pm.expect([1,2,3]).to.be.include(2);",
+							"    pm.expect(2).to.be.oneOf([1,2,3]);",
+							"});",
+							"",
+							"pm.test(\"Strings assertation\", function () {",
+							"   ",
+							"    pm.expect('John Doe').to.match(/^John/);",
+							"});",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "52592409-54fd-4d71-9ed5-036770cedac5",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"const boardName = getRandomBoardName();",
+							"pm.environment.set(\"boardName\", boardName);",
+							"",
+							"function getRandomBoardName() {",
+							"    return \"MyBoaardName \" + parseInt(Math.random() * 10000);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "name",
+						"value": "newList",
+						"disabled": true
+					},
+					{
+						"key": "idBoard",
+						"value": "MyNewBoard",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.trello.com/1/lists?name={{boardName}}&idBoard=5b8c6cbe9aad2e8ab0ca3ced&key={{TrelloKey}}&token={{TrelloToken}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{boardName}}"
+						},
+						{
+							"key": "idBoard",
+							"value": "5b8c6cbe9aad2e8ab0ca3ced"
+						},
+						{
+							"key": "key",
+							"value": "{{TrelloKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{TrelloToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asserts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de2a5ff3-ea6c-4b89-82ba-707b3a9caf4f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    let a = {",
+							"        \"name\" : \"John\"",
+							"    };",
+							"    let b = {",
+							"        \"name\" : \"John\"",
+							"      //  \"age\"  : 19",
+							"    };",
+							"    pm.expect(a).to.eql(b);",
+							"});",
+							"",
+							"pm.test(\"Equlas by objects\", function () {",
+							"    let a = {",
+							"        \"name\" : \"John\"",
+							"    };",
+							"    let b = {",
+							"        \"name\" : \"John\"",
+							"        ",
+							"    };",
+							"    pm.expect(a).to.eql(b,'1');",
+							"   // pm.expect(a).to.equal(b,'2'); eaqules a and b references | eql - equlas by objects",
+							"});",
+							"",
+							"pm.test(\"Eqales of booleans and other\", function () {",
+							"  // pm.expect(false).to.be.true;",
+							"  // pm.expect(null).to.be.true;",
+							"  //pm.expect(undefined).to.be.true;",
+							"  pm.expect([]).to.be.empty;",
+							"  pm.expect([].length).to.eql(0);",
+							"    pm.expect(true).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Array assertation\", function () {",
+							"    pm.expect([1,2,3]).to.be.include(2);",
+							"    pm.expect(2).to.be.oneOf([1,2,3]);",
+							"});",
+							"",
+							"pm.test(\"Strings assertation\", function () {",
+							"   ",
+							"    pm.expect('John Doe').to.match(/^John/);",
+							"});",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "52592409-54fd-4d71-9ed5-036770cedac5",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"const boardName = getRandomBoardName();",
+							"pm.environment.set(\"boardName\", boardName);",
+							"",
+							"function getRandomBoardName() {",
+							"    return \"MyBoaardName \" + parseInt(Math.random() * 10000);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "name",
+						"value": "newList",
+						"disabled": true
+					},
+					{
+						"key": "idBoard",
+						"value": "MyNewBoard",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://api.trello.com/1/lists?name={{boardName}}&idBoard=5b8c6cbe9aad2e8ab0ca3ced&key={{TrelloKey}}&token={{TrelloToken}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{boardName}}"
+						},
+						{
+							"key": "idBoard",
+							"value": "5b8c6cbe9aad2e8ab0ca3ced"
+						},
+						{
+							"key": "key",
+							"value": "{{TrelloKey}}"
+						},
+						{
+							"key": "token",
+							"value": "{{TrelloToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
